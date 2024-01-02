@@ -25,7 +25,10 @@ int printArray(int *array, int arraySize)
 /* 时间复杂度O(n^2)*/
 void bubbleSort01(int *array, int length)
 {
-
+    if (array == NULL)
+    {
+        return;
+    }
     for (int end = length; end > 0; end--)
     {
         for (int begin = 1; begin < length; begin++)
@@ -39,7 +42,11 @@ void bubbleSort01(int *array, int length)
 }
 
 void bubbleSort02(int *array, int length)
-{
+{   
+     if (array == NULL)
+    {
+        return;
+    }
     int sorted = 1;
     for (int end = length; end > 0; end--)
     {
@@ -63,7 +70,10 @@ void bubbleSort02(int *array, int length)
 
 void bubbleSort03(int *array, int length)
 {
-   
+     if (array == NULL)
+    {
+        return;
+    }
     int sortedIndex = 0;
     for (int end = length; end > 0; end--)
     {   
