@@ -1,4 +1,4 @@
-/* 选择排序 */
+/* 选择排序: 找到遍历的最小值放到前面位置 相较于冒泡排序 减少了交换次数 */
 #include <stdio.h>
 #if 0
 #define BUFFER_SIZE 7
@@ -42,23 +42,50 @@ int main()
 }
 #endif
 
-
-
 #define BUFFER_SIZE 7
 
-int selectSort(int *buffer, int len)
-{
-    for (int pos = 0; pos < len; pos++)
+int selectSort(int *array, int length)
+{   
+    int ret = 0;
+    int minValue = 0;
+    int minIndex = 0;
+    for (int pos = 0; pos < length; pos++)
     {
-        
-    }
+        minValue = array[pos];
+        for (int begin = pos + 1; begin < length; begin++)
+        {
+            if (minValue > array[begin])
+            {
+                minValue = array[begin];
+                minIndex = begin;
+            }
+        }
 
+        if (minValue < array[pos])
+        {
+            int temp = array[pos];
+            array[pos] = minValue;
+            array[minIndex] = temp;
+        }
+    }
+    return ret;
 }
+
+int printArray(int *array, int arraySize)
+{
+    int ret = 0;
+    for (int idx = 0; idx < arraySize; idx++)
+    {
+        printf("array[%d] = %d\n", idx, array[idx]);
+    }
+    return ret;
+}
+
 
 int main()
 {
-    int buffer[BUFFER_SIZE] = {1, 30, 24, 5, 58, 12, 39};
-    int len = sizeof(buffer) / sizeof(buffer[0]);
-    
-
+    int array[BUFFER_SIZE] = {1, 30, 24, 5, 58, 12, 39};
+    int length = sizeof(array) / sizeof(array[0]);    
+    selectSort(array, length);
+    printArray(array, length);
 }
